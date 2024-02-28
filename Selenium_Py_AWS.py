@@ -13,13 +13,22 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 
+# Get the absolute path of the current script's directory
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set up the download directory within the current directory
+download_dir = os.path.join(script_dir, "downloads")
+
+# Create the downloads directory if it doesn't exist
+os.makedirs(download_dir, exist_ok=True)
+
 # Set up the WebDriver
-driver_path = "chromedriver"
+driver_path = os.path.join(script_dir, "chromedriver")
 chrome_binary_path = "/usr/bin/google-chrome"
 
-download_dir = "/Users/"
-chrome_options = Options()
+chrome_options = ChromeOptions()
 chrome_options.binary_location = chrome_binary_path
+chrome_options.add_argument("--no-sandbox")
 chrome_options.add_experimental_option("prefs", {
     "download.default_directory": download_dir,
     "download.prompt_for_download": False,
