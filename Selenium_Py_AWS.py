@@ -26,7 +26,7 @@ os.makedirs(download_dir, exist_ok=True)
 driver_path = os.path.join(script_dir, "chromedriver")
 chrome_binary_path = "/usr/bin/google-chrome"
 
-chrome_options = ChromeOptions()
+chrome_options = Options()
 chrome_options.binary_location = chrome_binary_path
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_experimental_option("prefs", {
