@@ -14,7 +14,7 @@ import requests
 
 
 # Set up the WebDriver
-driver_path = "/Users/chromedriver"
+driver_path = "chromedriver"
 chrome_binary_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 download_dir = "/Users/"
