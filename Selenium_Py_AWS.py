@@ -13,22 +13,35 @@ from selenium.webdriver.chrome.options import Options
 import requests
 
 
-# Get the absolute path of the current script's directory
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Set up the download directory within the current directory
-download_dir = os.path.join(script_dir, "downloads")
-
-# Create the downloads directory if it doesn't exist
-os.makedirs(download_dir, exist_ok=True)
+# # Set up the WebDriver
+# driver_path = "chromedriver"
+# chrome_binary_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+#
+# download_dir = "/Users/"
+# chrome_options = Options()
+# chrome_options.binary_location = chrome_binary_path
+# chrome_options.add_experimental_option("prefs", {
+#     "download.default_directory": download_dir,
+#     "download.prompt_for_download": False,
+#     "download.directory_upgrade": True,
+#     "plugins.always_open_pdf_externally": True
+# })
+#
+# service = Service(executable_path=driver_path)
+# driver = webdriver.Chrome(service=service, options=chrome_options)
+# print("WebDriver initialized.")
 
 # Set up the WebDriver
-driver_path = os.path.join(script_dir, "chromedriver")
-chrome_binary_path = "/usr/bin/google-chrome"
+base_path = "/home/ec2-user/my_app/pysel/"  # Update this with the correct path to your Selenium_Py_AWS.py file
+driver_path = os.path.join(base_path, "chromedriver")
+chrome_binary_path = "/usr/bin/google-chrome"  # Update this with the correct path to your Google Chrome binary
+
+download_dir = os.path.join(base_path, "downloads")
+os.makedirs(download_dir, exist_ok=True)  # Create the download directory if it doesn't exist
+
 
 chrome_options = Options()
 chrome_options.binary_location = chrome_binary_path
-chrome_options.add_argument("--no-sandbox")
 chrome_options.add_experimental_option("prefs", {
     "download.default_directory": download_dir,
     "download.prompt_for_download": False,
